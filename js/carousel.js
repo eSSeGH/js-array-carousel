@@ -19,21 +19,27 @@ console.log(slideEls)
 
 let indexSlide = 0
 
-arrowRightEl.addEventListener("click", function () {
-    console.log("next slide")
+if (indexSlide === (slideEls.length - 1)) {
+    
+} else {
 
-    let currentSlide = slideEls[indexSlide]
-    console.log(currentSlide)
-    currentSlide.classList.remove("active")
-    console.log(currentSlide)
-
-    let nextSlide = slideEls[indexSlide + 1]
-    nextSlide.classList.add("active")
-    console.log(nextSlide)
-
-    indexSlide++
-    console.log("index slide", indexSlide)
-})
+    arrowRightEl.addEventListener("click", function () {
+        console.log("next slide")
+    
+        let currentSlide = slideEls[indexSlide]
+        console.log(currentSlide)
+        currentSlide.classList.remove("active")
+        console.log(currentSlide)
+    
+        let nextSlide = slideEls[indexSlide + 1]
+        nextSlide.classList.add("active")
+        console.log(nextSlide)
+    
+        indexSlide++
+        console.log("index slide", indexSlide)
+    
+    })
+}
 
 
 arrowLeftEl.addEventListener("click", function () {
