@@ -54,6 +54,7 @@ arrowRightEl.addEventListener("click", function () {
     // mostrare la slide successiva
     let nextSlide = slideEls[++indexSlide]
     nextSlide.classList.add("active")
+    }
 
 })
 
@@ -70,6 +71,7 @@ arrowLeftEl.addEventListener("click", function () {
     // mostrare la slide precedente
     let precSlide = slideEls[--indexSlide]
     precSlide.classList.add("active")
+    }
 
 })
 
