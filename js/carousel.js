@@ -6,7 +6,7 @@ const imgArray = [
 ]
 
 const carouselEl = document.getElementById("carousel")
-console.log(carouselEl)
+
 
 
 for (i = 0; i < imgArray.length; i++) {
@@ -18,8 +18,6 @@ for (i = 0; i < imgArray.length; i++) {
             <img src="./img/${imgArray[i]}" alt="">
         </div>
         `
-        console.log(singleSlideActiveEl)
-
         carouselEl.innerHTML += singleSlideActiveEl
     } else {
 
@@ -28,58 +26,50 @@ for (i = 0; i < imgArray.length; i++) {
             <img src="./img/${imgArray[i]}" alt="">
         </div>
         `
-        console.log(singleSlideEl)
-
         carouselEl.innerHTML += singleSlideEl
     }
 }
 
+// selezionare gli elementi html slide appena creati
 let slideEls = document.querySelectorAll(".carousel .slide")
-console.log(slideEls)
 
-
+// recuperare le freccette
 const arrowLeftEl = document.getElementById("arrow-left")
 const arrowRightEl = document.getElementById("arrow-right")
 
+// dichiarare un indice che tenga conto della slide su cui siamo 
+// arrivati di volta in volta con le freccette
 let indexSlide = 0
 
 arrowRightEl.addEventListener("click", function () {
     console.log("next slide")
 
+    // controllo slide limite destro
     if (indexSlide < slideEls.length - 1) {
 
     // nascondere la slide corrente
     let currentSlide = slideEls[indexSlide]
-    console.log(currentSlide)
     currentSlide.classList.remove("active")
-    console.log(currentSlide)
 
     // mostrare la slide successiva
     let nextSlide = slideEls[++indexSlide]
     nextSlide.classList.add("active")
-    console.log(nextSlide)
-
-    console.log("index slide", indexSlide)
-    }
 
 })
 
 arrowLeftEl.addEventListener("click", function () {
     console.log("prec slide")
 
+    // controllo slide limite sinistro
     if (indexSlide > 0) {
 
     // nascondere la slide corrente
     let currentSlide = slideEls[indexSlide]
     currentSlide.classList.remove("active")
-    console.log(currentSlide)
 
     // mostrare la slide precedente
     let precSlide = slideEls[--indexSlide]
     precSlide.classList.add("active")
-    console.log(precSlide)
 
-    console.log("index slide", indexSlide)
-    }
 })
 
