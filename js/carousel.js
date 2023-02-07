@@ -1,63 +1,85 @@
-console.log("carousel")
+const imgArray = [
+    "Dragon-blue&orange.webp",
+    "dragons-fight.jpg",
+    "Dragonseraphina.webp",
+    "flaming-dragons.jpg"
+]
+
+const carouselEl = document.getElementById("carousel")
+console.log(carouselEl)
+
+
+for (i = 0; i < imgArray.length; i++) {
+
+    if (i === 0) {
+
+        let singleSlideActiveEl = `
+        <div class='slide active'>
+            <img src="./img/${imgArray[i]}" alt="">
+        </div>
+        `
+        console.log(singleSlideActiveEl)
+
+        carouselEl.innerHTML += singleSlideActiveEl
+    } else {
+
+        let singleSlideEl = `
+        <div class='slide'>
+            <img src="./img/${imgArray[i]}" alt="">
+        </div>
+        `
+        console.log(singleSlideEl)
+
+        carouselEl.innerHTML += singleSlideEl
+    }
+}
+
+let slideEls = document.querySelectorAll(".carousel .slide")
+console.log(slideEls)
+
 
 const arrowLeftEl = document.getElementById("arrow-left")
 const arrowRightEl = document.getElementById("arrow-right")
 
-const firstSlide = document.getElementById("firstSlide")
-const secondSlide = document.getElementById("secondSlide")
-const thirdSlide = document.getElementById("thirdSlide")
-const fourthSlide = document.getElementById("fourthSlide")
-
-const slideEls = [
-    firstSlide,
-    secondSlide,
-    thirdSlide,
-    fourthSlide
-]
-
-console.log(slideEls)
-
 let indexSlide = 0
 
-if (indexSlide === (slideEls.length - 1)) {
-    
-} else {
-
-    arrowRightEl.addEventListener("click", function () {
-        console.log("next slide")
-    
-        let currentSlide = slideEls[indexSlide]
-        console.log(currentSlide)
-        currentSlide.classList.remove("active")
-        console.log(currentSlide)
-    
-        let nextSlide = slideEls[indexSlide + 1]
-        nextSlide.classList.add("active")
-        console.log(nextSlide)
-    
-        indexSlide++
-        console.log("index slide", indexSlide)
-    
-    })
-}
-
-
-arrowLeftEl.addEventListener("click", function () {
+arrowRightEl.addEventListener("click", function () {
     console.log("next slide")
 
+    if (indexSlide < slideEls.length - 1) {
+
+    // nascondere la slide corrente
+    let currentSlide = slideEls[indexSlide]
+    console.log(currentSlide)
+    currentSlide.classList.remove("active")
+    console.log(currentSlide)
+
+    // mostrare la slide successiva
+    let nextSlide = slideEls[++indexSlide]
+    nextSlide.classList.add("active")
+    console.log(nextSlide)
+
+    console.log("index slide", indexSlide)
+    }
+
+})
+
+arrowLeftEl.addEventListener("click", function () {
+    console.log("prec slide")
+
+    if (indexSlide > 0) {
+
+    // nascondere la slide corrente
     let currentSlide = slideEls[indexSlide]
     currentSlide.classList.remove("active")
     console.log(currentSlide)
 
-    let precSlide = slideEls[indexSlide - 1]
+    // mostrare la slide precedente
+    let precSlide = slideEls[--indexSlide]
     precSlide.classList.add("active")
     console.log(precSlide)
 
-    indexSlide += -1
     console.log("index slide", indexSlide)
+    }
 })
 
-// poi c'è da aggiungere il controllo che 
-// blocchi il codice all'ultima slide
-
-let slideImgs = []
